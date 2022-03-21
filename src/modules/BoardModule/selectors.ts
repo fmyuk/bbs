@@ -1,0 +1,1 @@
+export const getBoardList = (state) => state.boardList;
