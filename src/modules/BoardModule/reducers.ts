@@ -1,6 +1,6 @@
 import { BoardListState } from "./types";
 
-const initialState: BoardListState = {
+export const initialState: BoardListState = {
   boardList: []
 };
 

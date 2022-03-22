@@ -1,6 +1,6 @@
 import { ChatListState } from "./types";
 
-const initialState: ChatListState = {
+export const initialState: ChatListState = {
   chatList: []
 };
 

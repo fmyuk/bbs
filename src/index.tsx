@@ -3,11 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { configureStore } from './store/configureStore';
+import { store as rootReducer } from './store/store';
+import { initialState as boardState } from "./modules/BoardModule/reducers";
+import { initialState as chatState } from "./modules/ChatModule/reducers";
+import { Provider } from 'react-redux';
+
+const state = {
+  boardList: boardState,
+  chatList: chatState
+};
+
+const store = configureStore(rootReducer, state);
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
