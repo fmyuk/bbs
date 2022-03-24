@@ -1,6 +1,6 @@
 import React from "react";
 
-export type Board = {
+export type BoardProps = {
   id: string;
   title: string;
 };
