@@ -1,17 +1,17 @@
 import React from "react";
-import { Chat } from "../../atoms/Chat/Chat";
+import { Chat, ChatProps } from "../../atoms/Chat/Chat";
 
-export type ChatList = {
+export type ChatListProps = {
   title: string;
-  chatList: Chat[];
+  chatList: ChatProps[];
 };
 
-export const ChatList = (props: ChatList) => {
+export const ChatList = ({ chatList }: ChatListProps) => {
   return (
     <div>
       <h1>props.title</h1>
-      {props.chatList ? (
-        props.chatList.map(chat => {
+      {chatList ? (
+        chatList.map(chat => {
           <Chat comment={chat.comment} />
         })
       ) : (

@@ -5,7 +5,7 @@ export type BoardProps = {
   title: string;
 };
 
-export const Board = ({ id, title }: Board) => {
+export const Board = ({ id, title }: BoardProps) => {
   return (
     <div>
       <a href={id}>{title}</a>

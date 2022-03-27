@@ -1,10 +1,10 @@
 import React from "react";
 
-export type Chat = {
+export type ChatProps = {
   comment: string;
 };
 
-export const Chat = ({ comment }: Chat) => {
+export const Chat = ({ comment }: ChatProps) => {
   return (
     <div>
       {comment}

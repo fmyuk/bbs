@@ -1,4 +1,5 @@
 export type ChatListState = {
+  title: string;
   chatList: ChatState[];
 };
 

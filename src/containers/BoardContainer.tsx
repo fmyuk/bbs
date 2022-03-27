@@ -10,9 +10,5 @@ export const BoardContainer = () => {
     boardList: boardList.boardList as BoardProps[]
   };
 
-  return (
-    <>
-      <BoardList {...props} />
-    </>
-  );
+  return <BoardList {...props} />;
 };
