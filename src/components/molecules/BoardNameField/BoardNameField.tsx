@@ -1,33 +1,32 @@
 import React, { ChangeEvent, useCallback } from "react";
-import flex from "styles/utility/flex.module.scss";
 import AddButton from "../../atoms/AddButton/AddButton";
 import TextInput from "../../atoms/TextInput/TextInput";
 
-interface Props {
-  keyword: string;
-  onChangeKeyword: (keyword: string) => void;
-  onClickSearch: () => void;
-}
+type Props = {
+  title: string;
+  onChangeTitle: (title: string) => void;
+  onClickAdd: () => void;
+};
 
-const BoardNameField = ({ keyword, onChangeKeyword, onClickSearch }: Props) => {
+const BoardNameField = ({ title, onChangeTitle, onClickAdd }: Props) => {
   const handleInputText = useCallback((e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    onChangeKeyword(e.target.value);
+    onChangeTitle(e.target.value);
   }, []);
 
-  const handleClickSearch = useCallback(() => {
-    onClickSearch();
+  const handleClickAdd = useCallback(() => {
+    onClickAdd();
   }, []);
 
   return (
-    <div className={flex.flex__row_center}>
+    <div>
       <TextInput
         onChange={handleInputText}
-        value={keyword}
+        value={title}
         type={"text"}
       />
       <AddButton
         label={"ADD"}
-        onClick={handleClickSearch}
+        onClick={handleClickAdd}
       />
     </div>
   );

@@ -1,11 +1,22 @@
-import { BoardListState } from "./types";
+import { actionTypes } from "./actions";
+import { BoardAction, BoardListState } from "./types";
 
 export const initialState: BoardListState = {
-  boardList: []
+  boardList: [],
+  title: ""
 };
 
 export const boardListReducer = (
-  state: BoardListState = initialState
+  state: BoardListState = initialState,
+  action: BoardAction
 ) => {
-  return state;
+  switch (action.type) {
+    case actionTypes.CHANGE_TITLE:
+      return {
+        ...state,
+        title: action.title
+      };
+    default:
+      return state;
+  }
 };

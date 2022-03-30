@@ -1,5 +1,6 @@
 export type ChatListState = {
   title: string;
+  comment: string;
   chatList: ChatState[];
 };
 
