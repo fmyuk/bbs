@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
 import { ChatProps } from "../components/atoms/Chat/Chat";
 import { ChatList } from "../components/organisms/ChatList/ChatList";
+import { actionCreators } from "../modules/ChatModule/actions";
+import { addChat } from "../modules/ChatModule/operations";
 import { getChatList } from "../modules/ChatModule/selectors";
 
 export const ChatContainer = () => {
-  const navigate = useNavigate();
-  const disaptch = useDispatch();
+  const dispatch = useDispatch();
   const chatList = useSelector(getChatList);
 
   const props = {
@@ -15,10 +15,10 @@ export const ChatContainer = () => {
     comment: chatList.comment,
     chatList: chatList.chatList as ChatProps[],
     onChangeComment: (comment: string) => {
-
+      dispatch(actionCreators.changeComment(comment));
     },
     onClickComment: () => {
-
+      dispatch(addChat());
     }
   };
   return <ChatList {...props} />
