@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useCallback } from "react";
-import AddButton from "../../atoms/AddButton/AddButton";
+import Button from "../../atoms/Button/Button";
 import TextInput from "../../atoms/TextInput/TextInput";
 
 type Props = {
@@ -24,7 +24,7 @@ const BoardNameField = ({ title, onChangeTitle, onClickAdd }: Props) => {
         value={title}
         type={"text"}
       />
-      <AddButton
+      <Button
         label={"ADD"}
         onClick={handleClickAdd}
       />

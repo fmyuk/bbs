@@ -16,6 +16,9 @@ export const boardListReducer = (
         ...state,
         title: action.title
       };
+    case actionTypes.SAVE_BOARD:
+      state.boardList.push(action.response);
+      return state;
     default:
       return state;
   }

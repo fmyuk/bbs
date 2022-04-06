@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useCallback } from "react";
-import AddButton from "../../atoms/AddButton/AddButton";
+import Button from "../../atoms/Button/Button";
 import TextInput from "../../atoms/TextInput/TextInput";
 
 type Props = {
@@ -13,7 +13,7 @@ const CommentField = ({ comment, onChangeComment, onClickComment }: Props) => {
     onChangeComment(e.target.value);
   }, []);
 
-  const handleClickComment = useCallback(() => {
+  const handleOnClickComment = useCallback(() => {
     onClickComment();
   }, []);
 
@@ -24,9 +24,9 @@ const CommentField = ({ comment, onChangeComment, onClickComment }: Props) => {
         value={comment}
         type={"text"}
       />
-      <AddButton
+      <Button
         label={"COMMENT"}
-        onClick={handleClickComment}
+        onClick={handleOnClickComment}
       />
     </div>
   );

@@ -6,7 +6,6 @@ export type BoardListState = {
   title: string;
 };
 
-
 export type BoardState = {
   id: string;
   title: string;

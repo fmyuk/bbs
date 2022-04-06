@@ -5,7 +5,7 @@ interface Props {
   onClick: () => void;
 }
 
-const AddButton: FC<Props> = React.memo((props) => {
+const Button: FC<Props> = React.memo((props) => {
   const { label, onClick } = props;
   return (
     <button onClick={onClick}>
@@ -14,4 +14,4 @@ const AddButton: FC<Props> = React.memo((props) => {
   );
 });
 
-export default AddButton;
+export default Button;
