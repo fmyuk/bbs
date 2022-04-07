@@ -1,4 +1,6 @@
-import { ChatListState } from "./types";
+import { Reducer } from "redux";
+import { actionTypes } from "./actions";
+import { ChatAction, ChatListState } from "./types";
 
 export const initialState: ChatListState = {
   title: "",
@@ -6,8 +8,20 @@ export const initialState: ChatListState = {
   chatList: []
 };
 
-export const chatListReducer = (
-  state: ChatListState = initialState
+export const chatListReducer: Reducer<ChatListState, any> = (
+  state: ChatListState = initialState,
+  action: ChatAction
 ) => {
-  return state;
+  switch (action.type) {
+    case actionTypes.CHANGE_COMMENT:
+      return {
+        ...state,
+        comment: action.comment
+      }
+    case actionTypes.ADD_CHAT:
+      state.chatList.push(action.response);
+      return state;
+    default:
+      return state;
+  }
 };

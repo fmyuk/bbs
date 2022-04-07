@@ -14,6 +14,7 @@ export const saveBoard = (): ThunkAction<
   try {
     const data = await fetch(BASE_PATH + "board?title=" + state.boardList.title, {
       method: "POST",
+      credentials: 'omit',
       headers: {
         "Content-Type": "application/json"
       }

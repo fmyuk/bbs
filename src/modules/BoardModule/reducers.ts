@@ -1,3 +1,4 @@
+import { Reducer } from "redux";
 import { actionTypes } from "./actions";
 import { BoardAction, BoardListState } from "./types";
 
@@ -6,7 +7,7 @@ export const initialState: BoardListState = {
   title: ""
 };
 
-export const boardListReducer = (
+export const boardListReducer: Reducer<BoardListState, any> = (
   state: BoardListState = initialState,
   action: BoardAction
 ) => {
