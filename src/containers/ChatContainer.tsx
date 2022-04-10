@@ -14,11 +14,19 @@ export const ChatContainer = () => {
     title: chatList.title,
     comment: chatList.comment,
     chatList: chatList.chatList as ChatProps[],
-    onChangeComment: (comment: string) => {
-      dispatch(actionCreators.changeComment(comment));
-    },
-    onClickComment: () => {
-      dispatch(addChat());
+    actions: {
+      onChangeComment: (comment: string) => {
+        dispatch(actionCreators.changeComment(comment));
+      },
+      onClickComment: () => {
+        dispatch(addChat());
+      }
+    // onClickEdit: (id: string, title: string) => {
+    //   dispatch(editChat(id, title));
+    // },
+    // onClickDelete: (id: string) => {
+    //   dispatch(deleteChat(id));
+    // }
     }
   };
   return <ChatList {...props} />

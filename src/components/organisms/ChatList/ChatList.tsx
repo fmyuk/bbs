@@ -1,16 +1,15 @@
 import React from "react";
 import { Chat, ChatProps } from "../../atoms/Chat/Chat";
-import CommentField from "../../molecules/CommentFIeld/CommentFIeld";
+import CommentField, { ChatListActions } from "../../molecules/CommentFIeld/CommentFIeld";
 
 export type ChatListProps = {
   title: string;
   comment: string;
   chatList: ChatProps[];
-  onChangeComment: (comment: string) => void;
-  onClickComment: () => void;
+  actions: ChatListActions;
 };
 
-export const ChatList = ({ comment, chatList, onChangeComment, onClickComment }: ChatListProps) => {
+export const ChatList = ({ comment, chatList, actions }: ChatListProps) => {
   return (
     <div>
       <h1>props.title</h1>
@@ -21,7 +20,7 @@ export const ChatList = ({ comment, chatList, onChangeComment, onClickComment }:
       ) : (
         <div>コメントはありません</div>
       )}
-      <CommentField comment={comment} onChangeComment={onChangeComment} onClickComment={onClickComment} />
+      <CommentField comment={comment} actions={actions} />
     </div>
   );
 };

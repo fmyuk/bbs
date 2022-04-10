@@ -8,6 +8,7 @@ export type ChatListState = {
 };
 
 export type ChatState = {
+  id: string;
   comment: string;
 };
 

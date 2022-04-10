@@ -19,7 +19,11 @@ export const chatListReducer: Reducer<ChatListState, any> = (
         comment: action.comment
       }
     case actionTypes.ADD_CHAT:
-      state.chatList.push(action.response);
+      const chat = {
+        id: action.response.id,
+        comment: action.response.comment
+      };
+      state.chatList.push(chat);
       return state;
     default:
       return state;
