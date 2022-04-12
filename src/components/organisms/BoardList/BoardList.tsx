@@ -1,19 +1,16 @@
 import React from "react";
 import { Board, BoardProps } from "../../atoms/Board/Board";
-import BoardNameField from "../../molecules/BoardNameField/BoardNameField";
+import BoardNameField, { BoardListActions } from "../../molecules/BoardNameField/BoardNameField";
 
 export type BoardListProps = {
   boardList: BoardProps[],
   title: string;
-  onChangeTitle: (title: string) => void;
-  onClickAdd: () => void;
+  actions: BoardListActions;
 };
 
 export const BoardList = ({
   boardList,
-  title,
-  onChangeTitle,
-  onClickAdd
+  title,actions
 }: BoardListProps) => {
 
   return (
@@ -25,7 +22,7 @@ export const BoardList = ({
       ) : (
         <div>掲示板はありません</div>
       )}
-      <BoardNameField title={title} onChangeTitle={onChangeTitle} onClickAdd={onClickAdd} />
+      <BoardNameField title={title} actions={actions} />
     </>
   );
 };

@@ -1,10 +1,39 @@
 import { ThunkAction } from "redux-thunk";
-import { BASE_PATH } from "../../constants/common-constants";
+import { BASE_PATH, CHAT_PATH } from "../../constants/common-constants";
 import { StoreState } from "../../store/store";
 import { ChatAction } from "../ChatModule/types";
 import { actionCreators } from "./actions";
 
-export const addChat = (): ThunkAction<
+export const getChat = (board: string, title: string): ThunkAction<
+  void,
+  StoreState,
+  undefined,
+  ChatAction
+> => async (dispatch, getState) => {
+  try {
+    const data = await fetch(
+      BASE_PATH + CHAT_PATH + board, {
+      method: "GET",
+      mode: 'no-cors',
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        return data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    
+    dispatch(actionCreators.receiveAddChat(data));
+  } catch (e) {
+    console.log("Error");
+  }
+};
+
+export const addChat = (board: string, title: string): ThunkAction<
   void,
   StoreState,
   undefined,
@@ -13,8 +42,9 @@ export const addChat = (): ThunkAction<
   const state = getState();
   try {
     const data = await fetch(
-      BASE_PATH + "chat?comment=" + state.chatList.comment, {
+      BASE_PATH + "chat?board=" + board + "&title=" + title + "&comment=" + state.chatList.comment, {
       method: "POST",
+      mode: 'no-cors',
       headers: {
         "Content-Type": "application/json"
       }
@@ -40,8 +70,9 @@ export const editChat = (id: string, title: string): ThunkAction<
   ChatAction
 > => async (dispatch, getState) => {
   try {
-    const data = await fetch(BASE_PATH + "chat/" + id + "?title=" + title, {
+    const data = await fetch(BASE_PATH + CHAT_PATH + id + "?title=" + title, {
       method: "PUT",
+      mode: 'no-cors',
       headers: {
         "Content-Type": "application/json"
       }
@@ -67,8 +98,9 @@ export const deleteChat = (id: string): ThunkAction<
   ChatAction
 > => async (dispatch, getState) => {
   try {
-    const data = await fetch(BASE_PATH + "chat/" + id, {
+    const data = await fetch(BASE_PATH + CHAT_PATH + id, {
       method: "DELETE",
+      mode: 'no-cors',
       headers: {
         "Content-Type": "application/json"
       }

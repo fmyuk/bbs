@@ -3,24 +3,26 @@ import Button from "../../atoms/Button/Button";
 import TextInput from "../../atoms/TextInput/TextInput";
 
 type Props = {
+  board: string;
+  title: string;
   comment: string;
   actions: ChatListActions
 };
 
 export type ChatListActions = {
   onChangeComment: (comment: string) => void;
-  onClickComment: () => void;
-  onClickEdit?: () => void;
-  onClickDelete?: () => void;
+  onClickComment: (board: string, title: string) => void;
+  onClickEdit?: (id: string, title: string) => void;
+  onClickDelete?: (id: string) => void;
 };
 
-const CommentField = ({ comment, actions }: Props) => {
+const CommentField = ({ comment, board, title, actions }: Props) => {
   const handleInputComment = useCallback((e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     actions.onChangeComment(e.target.value);
   }, []);
 
   const handleOnClickComment = useCallback(() => {
-    actions.onClickComment();
+    actions.onClickComment(board, title);
   }, []);
 
   return (

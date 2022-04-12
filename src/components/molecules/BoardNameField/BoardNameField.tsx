@@ -4,17 +4,23 @@ import TextInput from "../../atoms/TextInput/TextInput";
 
 type Props = {
   title: string;
-  onChangeTitle: (title: string) => void;
-  onClickAdd: () => void;
+  actions: BoardListActions;
 };
 
-const BoardNameField = ({ title, onChangeTitle, onClickAdd }: Props) => {
+export type BoardListActions = {
+  onChangeTitle: (title: string) => void;
+  onClickAdd: () => void;
+  onClickEdit?: (id: string) => void;
+  onClickDelete?: (id: string) => void;
+};
+
+const BoardNameField = ({ title, actions }: Props) => {
   const handleInputText = useCallback((e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    onChangeTitle(e.target.value);
+    actions.onChangeTitle(e.target.value);
   }, []);
 
   const handleClickAdd = useCallback(() => {
-    onClickAdd();
+    actions.onClickAdd();
   }, []);
 
   return (

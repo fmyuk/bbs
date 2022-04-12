@@ -4,12 +4,13 @@ import CommentField, { ChatListActions } from "../../molecules/CommentFIeld/Comm
 
 export type ChatListProps = {
   title: string;
+  board: string;
   comment: string;
   chatList: ChatProps[];
   actions: ChatListActions;
 };
 
-export const ChatList = ({ comment, chatList, actions }: ChatListProps) => {
+export const ChatList = ({ title, board, comment, chatList, actions }: ChatListProps) => {
   return (
     <div>
       <h1>props.title</h1>
@@ -20,7 +21,7 @@ export const ChatList = ({ comment, chatList, actions }: ChatListProps) => {
       ) : (
         <div>コメントはありません</div>
       )}
-      <CommentField comment={comment} actions={actions} />
+      <CommentField comment={comment} board={board} title={title} actions={actions} />
     </div>
   );
 };

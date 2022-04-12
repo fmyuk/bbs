@@ -9,7 +9,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/board" element={<BoardContainer />} />
-        <Route path="/chat/:id" element={<ChatContentsContainer />} />
+        <Route path="/chat/:id/:title" element={<ChatContentsContainer />} />
       </Routes>
     </BrowserRouter>
   );

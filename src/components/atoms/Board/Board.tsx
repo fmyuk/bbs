@@ -1,4 +1,5 @@
 import React from "react";
+import { CHAT_PATH, SLASH, WEB_BASE_PATH } from "../../../constants/common-constants";
 
 export type BoardProps = {
   id: string;
@@ -8,7 +9,7 @@ export type BoardProps = {
 export const Board = ({ id, title }: BoardProps) => {
   return (
     <div>
-      <a href={id}>{title}</a>
+      <a href={WEB_BASE_PATH + CHAT_PATH + id + SLASH + title}>{title}</a>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { actionTypes } from "./actions";
 import { ChatAction, ChatListState } from "./types";
 
 export const initialState: ChatListState = {
+  board: "",
   title: "",
   comment: "",
   chatList: []
