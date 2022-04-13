@@ -25,6 +25,8 @@ export const boardListReducer: Reducer<BoardListState, any> = (
     case actionTypes.SAVE_BOARD:
       state.boardList.push(action.response);
       return state;
+    case actionTypes.EDIT_TEXT:
+      return state;
     default:
       return state;
   }

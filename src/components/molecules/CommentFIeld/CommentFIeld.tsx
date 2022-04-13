@@ -12,8 +12,9 @@ type Props = {
 export type ChatListActions = {
   onChangeComment: (comment: string) => void;
   onClickComment: (board: string, title: string) => void;
-  onClickEdit?: (id: string, title: string) => void;
-  onClickDelete?: (id: string) => void;
+  onClickEditButton: () => void;
+  onClickEdit: (id: string, title: string) => void;
+  onClickDelete: (id: string) => void;
 };
 
 const CommentField = ({ comment, board, title, actions }: Props) => {

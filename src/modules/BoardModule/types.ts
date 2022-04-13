@@ -9,6 +9,7 @@ export type BoardListState = {
 export type BoardState = {
   id: string;
   title: string;
+  isEdit: boolean;
 };
 
 export type BoardAction = PickActionType<typeof actionCreators>;

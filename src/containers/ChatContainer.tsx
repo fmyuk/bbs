@@ -28,16 +28,20 @@ export const ChatContainer = ({ id, title}: Board) => {
       onChangeComment: (comment: string) => {
         dispatch(actionCreators.changeComment(comment));
       },
-      onClickComment: (board: string, title: string) => {
-        dispatch(addChat(board, title));
+      onClickComment: () => {
+        dispatch(addChat());
       },
-      onClickEdit: (id: string, title: string) => {
-        dispatch(editChat(id, title));
+      onClickEditButton: () => {
+        dispatch(actionCreators.editText());
+      },
+      onClickEdit: (id: string) => {
+        dispatch(editChat(id));
       },
       onClickDelete: (id: string) => {
         dispatch(deleteChat(id));
       }
     }
   };
+  
   return <ChatList {...props} />
 }

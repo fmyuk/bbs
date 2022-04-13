@@ -4,8 +4,7 @@ export const actionTypes = {
   RECEIVE_CHAT: "RECEIVE_CHAT",
   CHANGE_COMMENT: "CHANGE_COMMENT",
   ADD_CHAT: "ADD_CHAT",
-  EDIT_CHAT: "EDIT_CHAT",
-  DELETE_CHAT: "DELETE_CHAT"
+  EDIT_TEXT: "EDIT_TEXT"
 } as const;
 
 export const actionCreators = {
@@ -21,12 +20,7 @@ export const actionCreators = {
     type: actionTypes.ADD_CHAT,
     response
   }),
-  editChat: (response: ChatResponse) => ({
-    type: actionTypes.EDIT_CHAT,
-    response
-  }),
-  deleteChat: (id: string) => ({
-    type: actionTypes.DELETE_CHAT,
-    id
+  editText: () => ({
+    type: actionTypes.EDIT_TEXT
   })
 };

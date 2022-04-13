@@ -11,6 +11,7 @@ export type ChatListState = {
 export type ChatState = {
   id: string;
   comment: string;
+  isEdit: boolean;
 };
 
 export type ChatResponse = {

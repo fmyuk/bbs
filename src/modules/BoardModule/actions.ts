@@ -5,7 +5,8 @@ export const actionTypes = {
   CHANGE_TITLE: "CHANGE_TITLE",
   SAVE_BOARD: "SAVE_BOARD",
   EDIT_BOARD: "EDIT_BOARD",
-  DELETE_BOARD: "DELETE_BOARD"
+  DELETE_BOARD: "DELETE_BOARD",
+  EDIT_TEXT: "EDIT_TEXT"
 } as const;
 
 export const actionCreators = {
@@ -20,5 +21,8 @@ export const actionCreators = {
   receiveSaveBoard: (response: BoardState) => ({
     type: actionTypes.SAVE_BOARD,
     response
+  }),
+  editText: () => ({
+    type: actionTypes.EDIT_TEXT
   })
 };

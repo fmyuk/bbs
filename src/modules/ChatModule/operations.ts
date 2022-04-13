@@ -12,7 +12,7 @@ export const getChat = (board: string, title: string): ThunkAction<
 > => async (dispatch, getState) => {
   try {
     const data = await fetch(
-      BASE_PATH + CHAT_PATH + board, {
+      BASE_PATH + CHAT_PATH + board + "&title=" + title, {
       method: "GET",
       mode: 'no-cors',
       headers: {
@@ -33,7 +33,7 @@ export const getChat = (board: string, title: string): ThunkAction<
   }
 };
 
-export const addChat = (board: string, title: string): ThunkAction<
+export const addChat = (): ThunkAction<
   void,
   StoreState,
   undefined,
@@ -42,7 +42,7 @@ export const addChat = (board: string, title: string): ThunkAction<
   const state = getState();
   try {
     const data = await fetch(
-      BASE_PATH + "chat?board=" + board + "&title=" + title + "&comment=" + state.chatList.comment, {
+      BASE_PATH + "chat?board=" + state.chatList.board + "&title=" + state.chatList.title + "&comment=" + state.chatList.comment, {
       method: "POST",
       mode: 'no-cors',
       headers: {
@@ -63,14 +63,15 @@ export const addChat = (board: string, title: string): ThunkAction<
   }
 };
 
-export const editChat = (id: string, title: string): ThunkAction<
+export const editChat = (id: string): ThunkAction<
   void,
   StoreState,
   undefined,
   ChatAction
 > => async (dispatch, getState) => {
+  const state = getState();
   try {
-    const data = await fetch(BASE_PATH + CHAT_PATH + id + "?title=" + title, {
+    const data = await fetch(BASE_PATH + CHAT_PATH + id + "?board=" + state.chatList.board + "&title=" + state.chatList.title, {
       method: "PUT",
       mode: 'no-cors',
       headers: {
@@ -85,7 +86,7 @@ export const editChat = (id: string, title: string): ThunkAction<
         console.log(error);
       });
     
-    dispatch(actionCreators.receiveAddChat(data));
+    dispatch(actionCreators.receiveChat(data));
   } catch (e) {
     console.log("Error");
   }
@@ -97,8 +98,9 @@ export const deleteChat = (id: string): ThunkAction<
   undefined,
   ChatAction
 > => async (dispatch, getState) => {
+  const state = getState();
   try {
-    const data = await fetch(BASE_PATH + CHAT_PATH + id, {
+    const data = await fetch(BASE_PATH + CHAT_PATH + id + "?board=" + state.chatList.board, {
       method: "DELETE",
       mode: 'no-cors',
       headers: {
@@ -113,7 +115,7 @@ export const deleteChat = (id: string): ThunkAction<
         console.log(error);
       });
     
-    dispatch(actionCreators.deleteChat(id));
+    dispatch(actionCreators.receiveChat(data));
   } catch (e) {
     console.log("Error");
   }

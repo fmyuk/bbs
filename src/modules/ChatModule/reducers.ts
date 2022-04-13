@@ -21,7 +21,8 @@ export const chatListReducer: Reducer<ChatListState, any> = (
         title: action.response[0].title,
         chatList: action.response.map(v => ({
           id: v.id,
-          comment: v.comment
+          comment: v.comment,
+          isEdit: false
         }))
       }
     case actionTypes.CHANGE_COMMENT:
@@ -32,13 +33,12 @@ export const chatListReducer: Reducer<ChatListState, any> = (
     case actionTypes.ADD_CHAT:
       const chat = {
         id: action.response.id,
-        comment: action.response.comment
+        comment: action.response.comment,
+        isEdit: false
       };
       state.chatList.push(chat);
       return state;
-    case actionTypes.EDIT_CHAT:
-      return state;
-    case actionTypes.DELETE_CHAT:
+    case actionTypes.EDIT_TEXT:
       return state;
     default:
       return state;
