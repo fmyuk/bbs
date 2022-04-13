@@ -12,6 +12,11 @@ export const boardListReducer: Reducer<BoardListState, any> = (
   action: BoardAction
 ) => {
   switch (action.type) {
+    case actionTypes.RECEIVE_BOARD:
+      return {
+        ...state,
+        boardList: action.response
+      }
     case actionTypes.CHANGE_TITLE:
       return {
         ...state,

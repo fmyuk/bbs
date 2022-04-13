@@ -15,7 +15,7 @@ export type ChatState = {
 
 export type ChatResponse = {
   id: string,
-  boardId: string,
+  board: string,
   title: string,
   comment: string
 };

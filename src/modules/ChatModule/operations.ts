@@ -27,7 +27,7 @@ export const getChat = (board: string, title: string): ThunkAction<
         console.log(error);
       });
     
-    dispatch(actionCreators.receiveAddChat(data));
+    dispatch(actionCreators.receiveChat(data));
   } catch (e) {
     console.log("Error");
   }
@@ -113,7 +113,7 @@ export const deleteChat = (id: string): ThunkAction<
         console.log(error);
       });
     
-    dispatch(actionCreators.receiveAddChat(data));
+    dispatch(actionCreators.deleteChat(id));
   } catch (e) {
     console.log("Error");
   }

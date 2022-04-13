@@ -1,8 +1,39 @@
 import { ThunkAction } from "redux-thunk";
-import { BASE_PATH } from "../../constants/common-constants";
+import { BASE_PATH, BOARD_PATH } from "../../constants/common-constants";
 import { StoreState } from "../../store/store";
 import { actionCreators } from "./actions";
 import { BoardAction } from "./types";
+
+export const getBoard = (): ThunkAction<
+  void,
+  StoreState,
+  undefined,
+  BoardAction
+> => async (dispatch, getState) => {
+  const state = getState();
+  try {
+    const data = await fetch(BASE_PATH + BOARD_PATH, {
+      method: "POST",
+      mode: 'no-cors',
+      credentials: 'include',
+      headers: {
+        "Content-Type": "application/json"
+
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        return data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    
+    dispatch(actionCreators.receiveBoard(data));
+  } catch (e) {
+    console.log("Error");
+  }
+};
 
 export const saveBoard = (): ThunkAction<
   void,
@@ -17,9 +48,7 @@ export const saveBoard = (): ThunkAction<
       mode: 'no-cors',
       credentials: 'include',
       headers: {
-        "Content-Type": "application/json",
-        "ACCESS-CONTROL-ALLOW-ORIGIN": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS"
+        "Content-Type": "application/json"
 
       }
     })
@@ -45,7 +74,7 @@ export const editBoard = (id: string): ThunkAction<
 > => async (dispatch, getState) => {
   const state = getState();
   try {
-    const data = await fetch(BASE_PATH + "board/" + id + "?title=" + state.boardList.title, {
+    const data = await fetch(BASE_PATH + BOARD_PATH + id + "?title=" + state.boardList.title, {
       method: "PUT",
       mode: 'no-cors',
       headers: {
@@ -60,7 +89,7 @@ export const editBoard = (id: string): ThunkAction<
         console.log(error);
       });
     
-    dispatch(actionCreators.receiveSaveBoard(data));
+    dispatch(actionCreators.receiveBoard(data));
   } catch (e) {
     console.log("Error");
   }
@@ -74,7 +103,7 @@ export const deleteBoard = (id: string): ThunkAction<
 > => async (dispatch, getState) => {
   const state = getState();
   try {
-    const data = await fetch(BASE_PATH + "board/" + id, {
+    const data = await fetch(BASE_PATH + BOARD_PATH + id, {
       method: "delete",
       mode: 'no-cors',
       headers: {
@@ -89,7 +118,7 @@ export const deleteBoard = (id: string): ThunkAction<
         console.log(error);
       });
     
-    dispatch(actionCreators.receiveSaveBoard(data));
+    dispatch(actionCreators.receiveBoard(data));
   } catch (e) {
     console.log("Error");
   }

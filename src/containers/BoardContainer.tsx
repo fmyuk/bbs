@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BoardProps } from "../components/atoms/Board/Board";
 import { BoardList } from "../components/organisms/BoardList/BoardList";
 import { actionCreators } from "../modules/BoardModule/actions";
-import { deleteBoard, editBoard, saveBoard } from "../modules/BoardModule/operations";
+import { deleteBoard, editBoard, getBoard, saveBoard } from "../modules/BoardModule/operations";
 import { getBoardList } from "../modules/BoardModule/selectors";
 
 export const BoardContainer = () => {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getBoard());
+  }, [])
+
   const boardList = useSelector(getBoardList);
 
   const props = {
