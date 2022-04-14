@@ -22,7 +22,8 @@ export const actionCreators = {
     type: actionTypes.SAVE_BOARD,
     response
   }),
-  editText: () => ({
-    type: actionTypes.EDIT_TEXT
+  editText: (id: string) => ({
+    type: actionTypes.EDIT_TEXT,
+    id
   })
 };

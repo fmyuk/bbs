@@ -24,8 +24,8 @@ export const BoardContainer = () => {
       onClickAdd: () => {
         dispatch(saveBoard());
       },
-      onClickEditButton: () => {
-        dispatch(actionCreators.editText());
+      onClickEditButton: (id: string) => {
+        dispatch(actionCreators.editText(id));
       },
       onClickEdit: (id: string) => {
         dispatch(editBoard(id));

@@ -26,6 +26,8 @@ export const boardListReducer: Reducer<BoardListState, any> = (
       state.boardList.push(action.response);
       return state;
     case actionTypes.EDIT_TEXT:
+      const index = state.boardList.findIndex(({ id }) => id === action.id);
+      state.boardList.splice(index, 1, {...state.boardList[index], isEdit: true});
       return state;
     default:
       return state;

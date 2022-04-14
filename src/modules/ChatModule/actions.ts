@@ -20,7 +20,8 @@ export const actionCreators = {
     type: actionTypes.ADD_CHAT,
     response
   }),
-  editText: () => ({
-    type: actionTypes.EDIT_TEXT
+  editText: (id: string) => ({
+    type: actionTypes.EDIT_TEXT,
+    id
   })
 };

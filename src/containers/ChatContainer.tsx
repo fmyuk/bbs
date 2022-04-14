@@ -31,8 +31,8 @@ export const ChatContainer = ({ id, title}: Board) => {
       onClickComment: () => {
         dispatch(addChat());
       },
-      onClickEditButton: () => {
-        dispatch(actionCreators.editText());
+      onClickEditButton: (id: string) => {
+        dispatch(actionCreators.editText(id));
       },
       onClickEdit: (id: string) => {
         dispatch(editChat(id));

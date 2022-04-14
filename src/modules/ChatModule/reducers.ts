@@ -39,6 +39,8 @@ export const chatListReducer: Reducer<ChatListState, any> = (
       state.chatList.push(chat);
       return state;
     case actionTypes.EDIT_TEXT:
+      const index = state.chatList.findIndex(({ id }) => id === action.id);
+      state.chatList.splice(index, 1, {...state.chatList[index], isEdit: true});
       return state;
     default:
       return state;
