@@ -10,7 +10,7 @@ type Props = {
 export type BoardListActions = {
   onChangeTitle: (title: string) => void;
   onClickAdd: () => void;
-  onClickEditButton: () => void;
+  onClickEditButton: (id: string) => void;
   onClickEdit: (id: string) => void;
   onClickDelete: (id: string) => void;
 };

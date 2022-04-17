@@ -13,7 +13,8 @@ export type ChatListProps = {
 export type ChatProps = {
   id: string;
   comment: string;
-}
+  isEdit: boolean;
+};
 
 export const ChatList = ({ title, board, comment, chatList, actions }: ChatListProps) => {
   return (
@@ -21,7 +22,7 @@ export const ChatList = ({ title, board, comment, chatList, actions }: ChatListP
       <h1>props.title</h1>
       {chatList ? (
         chatList.map(chat => {
-          <Chat id={chat.id} comment={chat.comment} board={board} actions={actions} />
+          <Chat id={chat.id} comment={chat.comment} editComment={comment} isEdit={chat.isEdit} actions={actions} />
         })
       ) : (
         <div>コメントはありません</div>

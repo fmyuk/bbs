@@ -17,7 +17,7 @@ export const BoardList = ({
     <>
       {boardList ? (
         boardList.map(board => {
-          <Board id={board.id} title={board.title} actions={actions} />
+          <Board id={board.id} title={board.title} editTitle={title} isEdit={board.isEdit} actions={actions} />
         })
       ) : (
         <div>掲示板はありません</div>

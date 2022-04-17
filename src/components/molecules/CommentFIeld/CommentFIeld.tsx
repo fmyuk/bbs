@@ -12,8 +12,8 @@ type Props = {
 export type ChatListActions = {
   onChangeComment: (comment: string) => void;
   onClickComment: (board: string, title: string) => void;
-  onClickEditButton: () => void;
-  onClickEdit: (id: string, title: string) => void;
+  onClickEditButton: (id: string) => void;
+  onClickEdit: (id: string) => void;
   onClickDelete: (id: string) => void;
 };
 
