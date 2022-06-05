@@ -14,11 +14,11 @@ export const getBoard = (): ThunkAction<
   try {
     const data = await fetch(BASE_PATH + BOARD_PATH, {
       method: "POST",
-      mode: 'no-cors',
-      credentials: 'include',
       headers: {
-        "Content-Type": "application/json"
-
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:8080",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "*"
       }
     })
       .then(res => res.json())
@@ -45,10 +45,11 @@ export const saveBoard = (): ThunkAction<
   try {
     const data = await fetch(BASE_PATH + "board?title=" + state.boardList.title, {
       method: "POST",
-      mode: 'no-cors',
-      credentials: 'include',
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:8080",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "*"
 
       }
     })
@@ -76,9 +77,11 @@ export const editBoard = (id: string): ThunkAction<
   try {
     const data = await fetch(BASE_PATH + BOARD_PATH + id + "?title=" + state.boardList.title, {
       method: "PUT",
-      mode: 'no-cors',
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:8080",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "*"
       }
     })
       .then(res => res.json())
@@ -105,9 +108,11 @@ export const deleteBoard = (id: string): ThunkAction<
   try {
     const data = await fetch(BASE_PATH + BOARD_PATH + id, {
       method: "delete",
-      mode: 'no-cors',
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:8080",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "*"
       }
     })
       .then(res => res.json())

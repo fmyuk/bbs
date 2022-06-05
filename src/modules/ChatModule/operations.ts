@@ -14,9 +14,11 @@ export const getChat = (board: string, title: string): ThunkAction<
     const data = await fetch(
       BASE_PATH + CHAT_PATH + board + "&title=" + title, {
       method: "GET",
-      mode: 'no-cors',
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:8080",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "*"
       }
     })
       .then(res => res.json())
@@ -44,9 +46,11 @@ export const addChat = (): ThunkAction<
     const data = await fetch(
       BASE_PATH + "chat?board=" + state.chatList.board + "&title=" + state.chatList.title + "&comment=" + state.chatList.comment, {
       method: "POST",
-      mode: 'no-cors',
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:8080",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "*"
       }
     })
       .then(res => res.json())
@@ -73,9 +77,11 @@ export const editChat = (id: string): ThunkAction<
   try {
     const data = await fetch(BASE_PATH + CHAT_PATH + id + "?board=" + state.chatList.board + "&title=" + state.chatList.title, {
       method: "PUT",
-      mode: 'no-cors',
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:8080",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "*"
       }
     })
       .then(res => res.json())
@@ -102,9 +108,11 @@ export const deleteChat = (id: string): ThunkAction<
   try {
     const data = await fetch(BASE_PATH + CHAT_PATH + id + "?board=" + state.chatList.board, {
       method: "DELETE",
-      mode: 'no-cors',
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:8080",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "*"
       }
     })
       .then(res => res.json())
